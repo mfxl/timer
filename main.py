@@ -12,12 +12,14 @@ class bcolors:
     RED = '\033[91m'
     ENDC = '\033[0m'
 
+
 def conv_seconds_to_time(total_seconds):
     _hours = total_seconds // 3600
     total_seconds %= 3600
     _minutes = total_seconds // 60
     _seconds = total_seconds % 60
     return _hours, _minutes, _seconds
+
 
 def is_valid_time_format(time_str):
     try:
@@ -39,6 +41,7 @@ def conv_str_to_time(time_str) -> datetime.datetime:
         _h, _m, _s = time_str.split(':')
     finally:
         return datetime.datetime(year=1, month=1, day=1, hour=int(_h), minute=int(_m), second=int(_s))
+
 
 def print_time_as_ascii(t: datetime.datetime):
     def colorize_digit(digit, color):
@@ -78,6 +81,7 @@ def count_down(t):
 
 if __name__ == '__main__':
     is_valid = False
+    time_str = ""
     while is_valid == False:
         time_str = input("Set Timer (HH:MM:SS): ")
         is_valid = is_valid_time_format(time_str)
